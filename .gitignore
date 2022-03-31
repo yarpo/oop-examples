@@ -1,2 +1,4 @@
 .idea
 oop-examples.iml
+out
+.DS_Store
