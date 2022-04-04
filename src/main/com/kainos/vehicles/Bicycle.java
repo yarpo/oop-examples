@@ -1,23 +1,27 @@
 package com.kainos.vehicles;
 
+import com.kainos.vehicles.breaks.BreakSystem;
+import com.kainos.vehicles.drivesystems.DrivingForce;
+
 import static com.kainos.Logger.log;
 
 public class Bicycle implements Vehicle {
 
-    private final float maxSpeed;
+    private final DrivingForce drivingForce;
+    private final BreakSystem breakSystem;
     private float currentSpeed;
     private boolean moving;
 
-    public Bicycle(float maxSpeed) {
-        this.currentSpeed = 0;
-        this.maxSpeed = maxSpeed;
+    public Bicycle(DrivingForce drivingForce, BreakSystem breakSystem) {
+        this.drivingForce = drivingForce;
+        this.breakSystem = breakSystem;
     }
 
     @Override
     public void stop() {
 
         while (currentSpeed > 0) {
-            currentSpeed = Math.abs(currentSpeed) - 1;
+            currentSpeed = breakSystem.decelerate(currentSpeed);
             log("Current speed of my bike = " + currentSpeed);
         }
 
@@ -35,7 +39,7 @@ public class Bicycle implements Vehicle {
             moving = true;
             currentSpeed = 1;
 
-            if (currentSpeed > maxSpeed) {
+            if (currentSpeed > drivingForce.getMaxSpeed()) {
                 throw new RuntimeException("You're too slow to ride a bike!");
             }
 
@@ -56,7 +60,7 @@ public class Bicycle implements Vehicle {
     @Override
     public void slowDown() {
         if (moving) {
-            currentSpeed = (float) Math.floor(currentSpeed - currentSpeed * 0.1);
+            currentSpeed = breakSystem.emergencyBreaking(currentSpeed);
             if (currentSpeed <= 0) {
                 currentSpeed = 0;
                 moving = false;
@@ -72,9 +76,9 @@ public class Bicycle implements Vehicle {
     @Override
     public void speedUp() {
         if (moving) {
-            currentSpeed = currentSpeed + (float) (currentSpeed * 0.1);
-            if (currentSpeed > maxSpeed) {
-                currentSpeed = maxSpeed;
+            currentSpeed = drivingForce.accelerate(currentSpeed);
+            if (currentSpeed > drivingForce.getMaxSpeed()) {
+                currentSpeed = drivingForce.getMaxSpeed();
                 log("I can't go any faster!");
             } else {
                 log("I'm going faster. My current speed is " + currentSpeed);

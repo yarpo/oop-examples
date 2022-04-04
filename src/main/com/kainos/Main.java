@@ -9,6 +9,9 @@ import com.kainos.services2.BusinessLogicService;
 import com.kainos.services2.MySqlConnection;
 import com.kainos.services2.SqliteConnection;
 import com.kainos.vehicles.Bicycle;
+import com.kainos.vehicles.breaks.DiscBreaks;
+import com.kainos.vehicles.breaks.VBreak;
+import com.kainos.vehicles.drivesystems.HumanLegs;
 
 import java.util.List;
 
@@ -38,7 +41,10 @@ public class Main {
         // how to add Oracle?
 
         VehicleController myRide = new VehicleController(
-                new Bicycle( 51),
+                new Bicycle(
+                        HumanLegs.professionalCyclist(),
+                        new VBreak()
+                ),
                 asList(
                         Commands.LIMIT_30,
                         Commands.LEFT,
