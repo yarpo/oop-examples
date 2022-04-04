@@ -11,7 +11,5 @@ public interface Vehicle {
     void speedUp();
 
     float getCurrentSpeed();
-    float getMaxSpeed();
-
     boolean isMoving();
 }

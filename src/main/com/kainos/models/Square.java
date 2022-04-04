@@ -1,8 +1,6 @@
 package com.kainos.models;
 
-import com.kainos.exceptions.Shape2DException;
-
-public class Square implements Shape, Shape3D {
+public class Square implements Shape {
 
     private float length;
 
@@ -13,10 +11,5 @@ public class Square implements Shape, Shape3D {
     @Override
     public float area() {
         return length * length;
-    }
-
-    @Override
-    public float volume() {
-        throw new Shape2DException("Square is 2D!");
     }
 }

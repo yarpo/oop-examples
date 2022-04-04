@@ -90,11 +90,6 @@ public class Bicycle implements Vehicle {
     }
 
     @Override
-    public float getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    @Override
     public boolean isMoving() {
         return moving;
     }
