@@ -1,10 +1,10 @@
 package com.kainos.exceptions;
 
 /**
- * This is how you want to make your com.kainos.exceptions more specific.
+ * This is how you want to make your exceptions more specific.
  *
  * Exception class is just a class like any other.
- * You can extend it to build your own hierarchy of com.kainos.exceptions.
+ * You can extend it to build your own hierarchy of exceptions.
  * */
 public class Shape2DException extends RuntimeException {
 
