@@ -1,17 +1,36 @@
 package com.kainos.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 @Builder
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PersonalDetails {
 
     private String firstName;
     private String lastName;
     private String address;
-    private int age;
     private LocalDate dateOfBirth;
+
+    public int getAge() {
+        return Period.between(dateOfBirth, LocalDate.now()).getYears();
+    }
+
+    @Override
+    public String toString() {
+        return "PersonalDetails(" +
+                "firstName=" + firstName +
+                ", lastName=" + lastName +
+                ", address=" + address +
+                ", age=" + getAge() +
+                ", dateOfBirth=" + dateOfBirth +
+                ')';
+    }
 }
