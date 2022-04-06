@@ -28,40 +28,12 @@ public class VehicleController {
                     break;
 
                 case LIMIT_30:
-                    if (vehicle.getCurrentSpeed() >= 30) {
-                        while (vehicle.getCurrentSpeed() > 30) {
-                            vehicle.slowDown();
-                        }
-                    } else {
-                        while (vehicle.getCurrentSpeed() < 30) {
-                            vehicle.speedUp();
-                        }
-                    }
+                    driveWithSpeedLimit(30);
                     break;
 
                 case LIMIT_50:
-                    if (vehicle.getCurrentSpeed() >= 50) {
-                        while (vehicle.getCurrentSpeed() > 50) {
-                            vehicle.slowDown();
-                        }
-                    } else {
-                        while (vehicle.getCurrentSpeed() < 50) {
-                            vehicle.speedUp();
-                        }
-                    }
+                    driveWithSpeedLimit(50);
                     break;
-
-//                case LIMIT_90:
-//                    if (vehicle.getCurrentSpeed() >= 90) {
-//                        while (vehicle.getCurrentSpeed() > 90) {
-//                            vehicle.slowDown();
-//                        }
-//                    } else {
-//                        while (vehicle.getCurrentSpeed() < 90) {
-//                            vehicle.speedUp();
-//                        }
-//                    }
-//                    break;
             }
         });
 
@@ -70,5 +42,17 @@ public class VehicleController {
         }
 
         vehicle.stop();
+    }
+
+    private void driveWithSpeedLimit(int limit) {
+        if (vehicle.getCurrentSpeed() >= limit) {
+            while (vehicle.getCurrentSpeed() > limit) {
+                vehicle.slowDown();
+            }
+        } else {
+            while (vehicle.getCurrentSpeed() < limit && vehicle.canGoFaster()) {
+                vehicle.speedUp();
+            }
+        }
     }
 }

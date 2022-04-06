@@ -12,4 +12,5 @@ public interface Vehicle {
 
     float getCurrentSpeed();
     boolean isMoving();
+    boolean canGoFaster();
 }

@@ -42,8 +42,8 @@ public class Main {
 
         VehicleController myRide = new VehicleController(
                 new Bicycle(
-                        HumanLegs.professionalCyclist(),
-                        new VBreak()
+                        HumanLegs.elderlyGentleman(),
+                        new DiscBreaks()
                 ),
                 asList(
                         Commands.LIMIT_30,

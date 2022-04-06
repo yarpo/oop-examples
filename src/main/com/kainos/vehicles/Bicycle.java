@@ -20,8 +20,13 @@ public class Bicycle implements Vehicle {
     @Override
     public void stop() {
 
+        if (!isMoving()) {
+            log("I'm not moving at all. I can't stop'.");
+            return;
+        }
+
         while (currentSpeed > 0) {
-            currentSpeed = breakSystem.decelerate(currentSpeed);
+            currentSpeed = breakSystem.emergencyBreaking(currentSpeed);
             log("Current speed of my bike = " + currentSpeed);
         }
 
@@ -33,7 +38,7 @@ public class Bicycle implements Vehicle {
     @Override
     public void start() {
 
-        if (moving) {
+        if (isMoving()) {
             log("I'm already moving!");
         } else {
             moving = true;
@@ -59,8 +64,8 @@ public class Bicycle implements Vehicle {
 
     @Override
     public void slowDown() {
-        if (moving) {
-            currentSpeed = breakSystem.emergencyBreaking(currentSpeed);
+        if (isMoving()) {
+            currentSpeed = breakSystem.decelerate(currentSpeed);
             if (currentSpeed <= 0) {
                 currentSpeed = 0;
                 moving = false;
@@ -77,7 +82,7 @@ public class Bicycle implements Vehicle {
     public void speedUp() {
         if (moving) {
             currentSpeed = drivingForce.accelerate(currentSpeed);
-            if (currentSpeed > drivingForce.getMaxSpeed()) {
+            if (currentSpeed >= drivingForce.getMaxSpeed()) {
                 currentSpeed = drivingForce.getMaxSpeed();
                 log("I can't go any faster!");
             } else {
@@ -96,5 +101,10 @@ public class Bicycle implements Vehicle {
     @Override
     public boolean isMoving() {
         return moving;
+    }
+
+    @Override
+    public boolean canGoFaster() {
+        return currentSpeed < drivingForce.getMaxSpeed();
     }
 }
