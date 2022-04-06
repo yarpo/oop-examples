@@ -1,16 +1,14 @@
 package com.kainos.vehicles.drivesystems;
 
+import lombok.RequiredArgsConstructor;
+
 import static com.kainos.Logger.log;
 
+@RequiredArgsConstructor
 public class HumanLegs implements DrivingForce {
 
     private final float accelerationFactor;
     private final float maxSpeed;
-
-    public HumanLegs(float accelerationFactor, float maxSpeed) {
-        this.accelerationFactor = accelerationFactor;
-        this.maxSpeed = maxSpeed;
-    }
 
     @Override
     public void run() {

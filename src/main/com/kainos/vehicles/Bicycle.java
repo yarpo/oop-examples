@@ -2,26 +2,22 @@ package com.kainos.vehicles;
 
 import com.kainos.vehicles.breaks.BreakSystem;
 import com.kainos.vehicles.drivesystems.DrivingForce;
+import lombok.RequiredArgsConstructor;
 
 import static com.kainos.Logger.log;
 
+@RequiredArgsConstructor
 public class Bicycle implements Vehicle {
 
     private final DrivingForce drivingForce;
     private final BreakSystem breakSystem;
     private float currentSpeed;
-    private boolean moving;
-
-    public Bicycle(DrivingForce drivingForce, BreakSystem breakSystem) {
-        this.drivingForce = drivingForce;
-        this.breakSystem = breakSystem;
-    }
 
     @Override
     public void stop() {
 
         if (!isMoving()) {
-            log("I'm not moving at all. I can't stop'.");
+            log("I'm not moving at all. I'm stopped.");
             return;
         }
 
@@ -30,8 +26,8 @@ public class Bicycle implements Vehicle {
             log("Current speed of my bike = " + currentSpeed);
         }
 
+        drivingForce.stop();
         currentSpeed = 0;
-        moving = false;
         log("I have stopped.");
     }
 
@@ -40,16 +36,16 @@ public class Bicycle implements Vehicle {
 
         if (isMoving()) {
             log("I'm already moving!");
-        } else {
-            moving = true;
-            currentSpeed = 1;
-
-            if (currentSpeed > drivingForce.getMaxSpeed()) {
-                throw new RuntimeException("You're too slow to ride a bike!");
-            }
-
-            log("I have started. Current speed of my bike = " + currentSpeed);
+            return;
         }
+        drivingForce.run();
+        currentSpeed = 1;
+
+        if (currentSpeed > drivingForce.getMaxSpeed()) {
+            throw new RuntimeException("You're too slow to ride a bike!");
+        }
+
+        log("I have started. Current speed of my bike = " + currentSpeed);
     }
 
     @Override
@@ -68,7 +64,6 @@ public class Bicycle implements Vehicle {
             currentSpeed = breakSystem.decelerate(currentSpeed);
             if (currentSpeed <= 0) {
                 currentSpeed = 0;
-                moving = false;
                 log("I'm not moving anymore!");
             } else {
                 log("I slowed down. My current speed is " + currentSpeed);
@@ -80,7 +75,7 @@ public class Bicycle implements Vehicle {
 
     @Override
     public void speedUp() {
-        if (moving) {
+        if (isMoving()) {
             currentSpeed = drivingForce.accelerate(currentSpeed);
             if (currentSpeed >= drivingForce.getMaxSpeed()) {
                 currentSpeed = drivingForce.getMaxSpeed();
@@ -100,7 +95,7 @@ public class Bicycle implements Vehicle {
 
     @Override
     public boolean isMoving() {
-        return moving;
+        return currentSpeed > 0;
     }
 
     @Override
