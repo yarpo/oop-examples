@@ -2,19 +2,16 @@ package com.kainos.vehicles;
 
 import com.kainos.vehicles.breaks.BreakSystem;
 import com.kainos.vehicles.drivesystems.DrivingForce;
+import lombok.RequiredArgsConstructor;
 
 import static com.kainos.Logger.log;
 
+@RequiredArgsConstructor
 public class Bicycle implements Vehicle {
 
     private final DrivingForce drivingForce;
     private final BreakSystem breakSystem;
     private float currentSpeed;
-
-    public Bicycle(DrivingForce drivingForce, BreakSystem breakSystem) {
-        this.drivingForce = drivingForce;
-        this.breakSystem = breakSystem;
-    }
 
     @Override
     public void stop() {
