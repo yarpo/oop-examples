@@ -16,33 +16,18 @@ class PersonalDetailsTest {
 
     @Test
     void allValuesShouldBeValid() {
-        PersonalDetails details = PersonalDetails.builder()
-                .firstName(TEST_FIRST_NAME)
-                .lastName(TEST_LAST_NAME)
-                .address(TEST_ADDRESS)
-                .dateOfBirth(TEST_DATE_OF_BIRTH)
-                .build();
+        PersonalDetails details = new PersonalDetails(
+                TEST_FIRST_NAME,
+                TEST_LAST_NAME,
+                TEST_ADDRESS,
+                TEST_AGE,
+                TEST_DATE_OF_BIRTH
+        );
 
         assertEquals(TEST_FIRST_NAME, details.getFirstName());
         assertEquals(TEST_LAST_NAME, details.getLastName());
         assertEquals(TEST_ADDRESS, details.getAddress());
         assertEquals(TEST_DATE_OF_BIRTH, details.getDateOfBirth());
         assertEquals(TEST_AGE, details.getAge());
-    }
-
-    @Test
-    void testToString() {
-        PersonalDetails details = PersonalDetails.builder()
-                .firstName(TEST_FIRST_NAME)
-                .lastName(TEST_LAST_NAME)
-                .address(TEST_ADDRESS)
-                .dateOfBirth(TEST_DATE_OF_BIRTH)
-                .build();
-
-        assertEquals(
-                "PersonalDetails(firstName=Johnny, lastName=Rambo, address=London Road, age=30, dateOfBirth=" +
-                        TEST_DATE_OF_BIRTH + ")",
-                details.toString()
-        );
     }
 }
