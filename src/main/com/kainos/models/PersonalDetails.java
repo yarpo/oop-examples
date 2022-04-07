@@ -22,4 +22,15 @@ public class PersonalDetails {
     public int getAge() {
         return Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
+
+    @Override
+    public String toString() {
+        return "PersonalDetails(" +
+                "firstName=" + firstName +
+                ", lastName=" + lastName +
+                ", address=" + address +
+                ", age=" + getAge() +
+                ", dateOfBirth=" + dateOfBirth +
+                ')';
+    }
 }

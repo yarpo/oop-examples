@@ -79,7 +79,6 @@ class PersonalDetailsTest {
                 .firstName(TEST_FIRST_NAME)
                 .lastName(TEST_LAST_NAME)
                 .address(TEST_ADDRESS)
-                // .age(TEST_AGE)
                 .dateOfBirth(TEST_DATE_OF_BIRTH)
                 .build();
 
