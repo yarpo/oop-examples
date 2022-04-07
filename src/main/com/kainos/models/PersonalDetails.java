@@ -53,24 +53,34 @@ public class PersonalDetails {
             return new PersonalDetails(firstName, lastName, address, age, dateOfBirth);
         }
 
-        public void setFirstName(String firstName) {
+        public PersonalDetailsBuilder setFirstName(String firstName) {
             this.firstName = firstName;
+
+            return this;
         }
 
-        public void setLastName(String lastName) {
+        public PersonalDetailsBuilder setLastName(String lastName) {
             this.lastName = lastName;
+
+            return this;
         }
 
-        public void setAddress(String address) {
+        public PersonalDetailsBuilder setAddress(String address) {
             this.address = address;
+
+            return this;
         }
 
-        public void setAge(int age) {
+        public PersonalDetailsBuilder setAge(int age) {
             this.age = age;
+
+            return this;
         }
 
-        public void setDateOfBirth(LocalDate dateOfBirth) {
+        public PersonalDetailsBuilder setDateOfBirth(LocalDate dateOfBirth) {
             this.dateOfBirth = dateOfBirth;
+
+            return this;
         }
     }
 }

@@ -58,4 +58,21 @@ class PersonalDetailsTest {
         assertEquals(TEST_DATE_OF_BIRTH, details.getDateOfBirth());
         assertEquals(TEST_AGE, details.getAge());
     }
+
+    @Test
+    void allValuesShouldBeValidUsingBuilderAndChain() {
+        PersonalDetails details = PersonalDetails.builder()
+                .setFirstName(TEST_FIRST_NAME)
+                .setLastName(TEST_LAST_NAME)
+                .setAddress(TEST_ADDRESS)
+                .setAge(TEST_AGE)
+                .setDateOfBirth(TEST_DATE_OF_BIRTH)
+                .build();
+
+        assertEquals(TEST_FIRST_NAME, details.getFirstName());
+        assertEquals(TEST_LAST_NAME, details.getLastName());
+        assertEquals(TEST_ADDRESS, details.getAddress());
+        assertEquals(TEST_DATE_OF_BIRTH, details.getDateOfBirth());
+        assertEquals(TEST_AGE, details.getAge());
+    }
 }
