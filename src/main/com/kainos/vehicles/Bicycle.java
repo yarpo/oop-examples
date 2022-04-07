@@ -1,9 +1,7 @@
 package com.kainos.vehicles;
 
 import com.kainos.vehicles.breaks.BreakSystem;
-import com.kainos.vehicles.breaks.DiscBreaks;
 import com.kainos.vehicles.drivesystems.DrivingForce;
-import com.kainos.vehicles.drivesystems.HumanLegs;
 import lombok.RequiredArgsConstructor;
 
 import static com.kainos.Logger.log;
@@ -14,12 +12,6 @@ public class Bicycle implements Vehicle {
     private final DrivingForce drivingForce;
     private final BreakSystem breakSystem;
     private float currentSpeed;
-
-    // this is not dependency injection
-    public Bicycle() {
-        this.drivingForce = HumanLegs.professionalCyclist();
-        this.breakSystem = new DiscBreaks();
-    }
 
     @Override
     public void stop() {
