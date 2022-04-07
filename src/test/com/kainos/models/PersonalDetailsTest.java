@@ -20,7 +20,6 @@ class PersonalDetailsTest {
                 TEST_FIRST_NAME,
                 TEST_LAST_NAME,
                 TEST_ADDRESS,
-                TEST_AGE,
                 TEST_DATE_OF_BIRTH
         );
 
@@ -47,7 +46,6 @@ class PersonalDetailsTest {
         builder.firstName(TEST_FIRST_NAME);
         builder.lastName(TEST_LAST_NAME);
         builder.address(TEST_ADDRESS);
-        builder.age(TEST_AGE);
         builder.dateOfBirth(TEST_DATE_OF_BIRTH);
 
         PersonalDetails details = builder.build();
@@ -65,7 +63,6 @@ class PersonalDetailsTest {
                 .firstName(TEST_FIRST_NAME)
                 .lastName(TEST_LAST_NAME)
                 .address(TEST_ADDRESS)
-                .age(TEST_AGE)
                 .dateOfBirth(TEST_DATE_OF_BIRTH)
                 .build();
 
@@ -82,7 +79,7 @@ class PersonalDetailsTest {
                 .firstName(TEST_FIRST_NAME)
                 .lastName(TEST_LAST_NAME)
                 .address(TEST_ADDRESS)
-                .age(TEST_AGE)
+                // .age(TEST_AGE)
                 .dateOfBirth(TEST_DATE_OF_BIRTH)
                 .build();
 

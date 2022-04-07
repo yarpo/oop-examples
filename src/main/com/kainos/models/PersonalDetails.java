@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 @Builder
 @Getter
@@ -16,6 +17,9 @@ public class PersonalDetails {
     private String firstName;
     private String lastName;
     private String address;
-    private int age;
     private LocalDate dateOfBirth;
+
+    public int getAge() {
+        return Period.between(dateOfBirth, LocalDate.now()).getYears();
+    }
 }
