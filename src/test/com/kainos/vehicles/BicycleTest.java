@@ -1,21 +1,43 @@
 package com.kainos.vehicles;
 
 import com.kainos.vehicles.breaks.BreakSystem;
-import com.kainos.vehicles.drivesystems.DrivingForce;
+import com.kainos.vehicles.drivesystems.HumanLegs;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
 
 class BicycleTest {
 
-    @Mock
-    DrivingForce mockDrivingForce;
+    @Test
+    void stopWhenNotMovingShouldNotCallBreakSystem() {
+        BreakSystem mockBreakSystem = mock(BreakSystem.class);
 
-    @Mock
-    BreakSystem mockBreakSystem;
+        Vehicle bicycle = new Bicycle(HumanLegs.elderlyGentleman(), mockBreakSystem);
+
+        assertFalse(bicycle.isMoving());
+        bicycle.stop();
+        assertFalse(bicycle.isMoving());
+
+        verifyNoMoreInteractions(mockBreakSystem);
+    }
 
     @Test
-    void stop() {
-        Vehicle bicycle = new Bicycle(mockDrivingForce, mockBreakSystem);
+    void stopWhenMovingShouldCallBreakSystem() {
+        BreakSystem mockBreakSystem = mock(BreakSystem.class);
+        when(mockBreakSystem.emergencyBreaking(1))
+                .thenReturn(0f);
+
+        Vehicle bicycle = new Bicycle(HumanLegs.elderlyGentleman(), mockBreakSystem);
+
+        assertFalse(bicycle.isMoving());
+        bicycle.start();
+        assertTrue(bicycle.isMoving());
+        bicycle.stop();
+        assertFalse(bicycle.isMoving());
     }
 
     @Test

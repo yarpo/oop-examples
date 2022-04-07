@@ -40,7 +40,8 @@ class PersonalDetailsTest {
                 .build();
 
         assertEquals(
-                "PersonalDetails(firstName=Johnny, lastName=Rambo, address=London Road, age=30, dateOfBirth=1992-04-04)",
+                "PersonalDetails(firstName=Johnny, lastName=Rambo, address=London Road, age=30, dateOfBirth=" +
+                        TEST_DATE_OF_BIRTH + ")",
                 details.toString()
         );
     }
