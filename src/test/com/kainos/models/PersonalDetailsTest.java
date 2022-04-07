@@ -75,4 +75,21 @@ class PersonalDetailsTest {
         assertEquals(TEST_DATE_OF_BIRTH, details.getDateOfBirth());
         assertEquals(TEST_AGE, details.getAge());
     }
+
+    @Test
+    void testToString() {
+        PersonalDetails details = PersonalDetails.builder()
+                .firstName(TEST_FIRST_NAME)
+                .lastName(TEST_LAST_NAME)
+                .address(TEST_ADDRESS)
+                .age(TEST_AGE)
+                .dateOfBirth(TEST_DATE_OF_BIRTH)
+                .build();
+
+        assertEquals(
+                "PersonalDetails(firstName=Johnny, lastName=Rambo, address=London Road, age=30, dateOfBirth=" +
+                        TEST_DATE_OF_BIRTH + ")",
+                details.toString()
+        );
+    }
 }

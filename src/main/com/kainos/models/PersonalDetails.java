@@ -16,4 +16,15 @@ public class PersonalDetails {
     private String address;
     private int age;
     private LocalDate dateOfBirth;
+
+    @Override
+    public String toString() {
+        return "PersonalDetails(" +
+                "firstName=" + firstName +
+                ", lastName=" + lastName +
+                ", address=" + address +
+                ", age=" + age +
+                ", dateOfBirth=" + dateOfBirth +
+                ')';
+    }
 }
