@@ -3,12 +3,14 @@ package com.kainos.models;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 
 @Builder
 @Getter
 @AllArgsConstructor
+@ToString
 public class PersonalDetails {
 
     private String firstName;
@@ -16,15 +18,4 @@ public class PersonalDetails {
     private String address;
     private int age;
     private LocalDate dateOfBirth;
-
-    @Override
-    public String toString() {
-        return "PersonalDetails(" +
-                "firstName=" + firstName +
-                ", lastName=" + lastName +
-                ", address=" + address +
-                ", age=" + age +
-                ", dateOfBirth=" + dateOfBirth +
-                ')';
-    }
 }
