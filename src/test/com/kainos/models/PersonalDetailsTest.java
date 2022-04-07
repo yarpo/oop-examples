@@ -34,7 +34,7 @@ class PersonalDetailsTest {
     @Test
     void getFirstNameShouldReturnValidValueWhenOnlyFirstNameSetUsingBuilder() {
         PersonalDetails.PersonalDetailsBuilder builder = PersonalDetails.builder();
-        builder.setFirstName(TEST_FIRST_NAME);
+        builder.firstName(TEST_FIRST_NAME);
 
         PersonalDetails details = builder.build();
 
@@ -44,11 +44,11 @@ class PersonalDetailsTest {
     @Test
     void allValuesShouldBeValidUsingBuilder() {
         PersonalDetails.PersonalDetailsBuilder builder = PersonalDetails.builder();
-        builder.setFirstName(TEST_FIRST_NAME);
-        builder.setLastName(TEST_LAST_NAME);
-        builder.setAddress(TEST_ADDRESS);
-        builder.setAge(TEST_AGE);
-        builder.setDateOfBirth(TEST_DATE_OF_BIRTH);
+        builder.firstName(TEST_FIRST_NAME);
+        builder.lastName(TEST_LAST_NAME);
+        builder.address(TEST_ADDRESS);
+        builder.age(TEST_AGE);
+        builder.dateOfBirth(TEST_DATE_OF_BIRTH);
 
         PersonalDetails details = builder.build();
 
@@ -62,11 +62,11 @@ class PersonalDetailsTest {
     @Test
     void allValuesShouldBeValidUsingBuilderAndChain() {
         PersonalDetails details = PersonalDetails.builder()
-                .setFirstName(TEST_FIRST_NAME)
-                .setLastName(TEST_LAST_NAME)
-                .setAddress(TEST_ADDRESS)
-                .setAge(TEST_AGE)
-                .setDateOfBirth(TEST_DATE_OF_BIRTH)
+                .firstName(TEST_FIRST_NAME)
+                .lastName(TEST_LAST_NAME)
+                .address(TEST_ADDRESS)
+                .age(TEST_AGE)
+                .dateOfBirth(TEST_DATE_OF_BIRTH)
                 .build();
 
         assertEquals(TEST_FIRST_NAME, details.getFirstName());
