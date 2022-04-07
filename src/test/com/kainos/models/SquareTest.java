@@ -7,12 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class SquareTest {
 
     @Test
-    void areaShouldReturnValidValueWhenLengthIs0() {
-        Square square = new Square(0);
-        assertEquals(0, square.area());
-    }
-
-    @Test
     void areaShouldReturnValidValueWhenLengthIs1() {
         Square square = new Square(1);
         assertEquals(1, square.area());
@@ -22,6 +16,14 @@ class SquareTest {
     void areaShouldReturnValidValueWhenLengthIsMoreThan2() {
         Square square = new Square(2);
         assertEquals(4, square.area());
+    }
+
+    // this test is also verifying the edge case
+    // square should not have length = 2 in "normal" geometry
+    @Test
+    void areaShouldReturnValidValueWhenLengthIs0() {
+        Square square = new Square(0);
+        assertEquals(0, square.area());
     }
 
     @Test
