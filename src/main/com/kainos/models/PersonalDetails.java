@@ -37,4 +37,40 @@ public class PersonalDetails {
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
+
+    public static PersonalDetailsBuilder builder() {
+        return new PersonalDetailsBuilder();
+    }
+
+    public static class PersonalDetailsBuilder {
+        private String firstName;
+        private String lastName;
+        private String address;
+        private int age;
+        private LocalDate dateOfBirth;
+
+        public PersonalDetails build() {
+            return new PersonalDetails(firstName, lastName, address, age, dateOfBirth);
+        }
+
+        public void setFirstName(String firstName) {
+            this.firstName = firstName;
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+
+        public void setDateOfBirth(LocalDate dateOfBirth) {
+            this.dateOfBirth = dateOfBirth;
+        }
+    }
 }

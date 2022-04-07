@@ -30,4 +30,32 @@ class PersonalDetailsTest {
         assertEquals(TEST_DATE_OF_BIRTH, details.getDateOfBirth());
         assertEquals(TEST_AGE, details.getAge());
     }
+
+    @Test
+    void getFirstNameShouldReturnValidValueWhenOnlyFirstNameSetUsingBuilder() {
+        PersonalDetails.PersonalDetailsBuilder builder = PersonalDetails.builder();
+        builder.setFirstName(TEST_FIRST_NAME);
+
+        PersonalDetails details = builder.build();
+
+        assertEquals(TEST_FIRST_NAME, details.getFirstName());
+    }
+
+    @Test
+    void allValuesShouldBeValidUsingBuilder() {
+        PersonalDetails.PersonalDetailsBuilder builder = PersonalDetails.builder();
+        builder.setFirstName(TEST_FIRST_NAME);
+        builder.setLastName(TEST_LAST_NAME);
+        builder.setAddress(TEST_ADDRESS);
+        builder.setAge(TEST_AGE);
+        builder.setDateOfBirth(TEST_DATE_OF_BIRTH);
+
+        PersonalDetails details = builder.build();
+
+        assertEquals(TEST_FIRST_NAME, details.getFirstName());
+        assertEquals(TEST_LAST_NAME, details.getLastName());
+        assertEquals(TEST_ADDRESS, details.getAddress());
+        assertEquals(TEST_DATE_OF_BIRTH, details.getDateOfBirth());
+        assertEquals(TEST_AGE, details.getAge());
+    }
 }
