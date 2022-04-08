@@ -1,6 +1,7 @@
 package com.kainos.vehicles;
 
 import com.kainos.vehicles.breaks.BreakSystem;
+import com.kainos.vehicles.breaks.VBreak;
 import com.kainos.vehicles.drivesystems.HumanLegs;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +14,18 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 class BicycleTest {
+
+    @Test
+    void stopWhenNotMovingShouldNotChangeAnything() {
+        Vehicle bicycle = new Bicycle(HumanLegs.elderlyGentleman(), new VBreak());
+
+        // I verify it's not moving
+        assertFalse(bicycle.isMoving());
+        // I can call stop - no error
+        bicycle.stop();
+        // but no change of state neither
+        assertFalse(bicycle.isMoving());
+    }
 
     @Test
     void stopWhenNotMovingShouldNotCallBreakSystem() {
@@ -46,6 +59,7 @@ class BicycleTest {
 
     @Test
     void start() {
+        // how could you unit test it?
     }
 
     @Test
